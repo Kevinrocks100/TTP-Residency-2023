@@ -21,10 +21,9 @@ function myEach(arr, callback) {
     callback(element); 
   }
 }
-let forEach = myEach(numbers, (ele) => {
-  return ele;
+myEach(numbers, function(number) {
+  console.log(number); // 1 2 3 4 5
 });
-console.log(forEach);
 
 //2. myMap()
 function myMap(arr, callback) {
@@ -42,17 +41,15 @@ console.log(doubledNumbers);
 //3. myFilter()
 function myFilter(arr, callback) {
   const result = [];
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 0) {
-      result.push(callback(arr[i]));
+  for (var i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) {
+      result.push(arr[i]);
     }
   }
   return result;
 }
-let evenNumbers = myFilter(numbers, (ele) => {
-  return ele;
-});
-console.log(evenNumbers);
+let evenNumbers = numbers.filter(function(number) { return number % 2 === 0; });
+console.log(evenNumbers); // [2, 4]
 
 //4. mySome()
 function mySome(arr, callback) {
