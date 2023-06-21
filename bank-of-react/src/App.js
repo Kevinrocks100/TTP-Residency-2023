@@ -6,7 +6,7 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Debits from './components/Debits';
-// import Credits from './components/Credits';
+import Credits from './components/Credits';
 
 const App = (props) => {
   const [accountBalance, setAccountBalance] = useState(0)
@@ -83,7 +83,7 @@ const App = (props) => {
               setAccountBalance={setAccountBalance}
               />} 
             />
-          {/* <Route 
+          <Route 
             path="/credits" 
             element={<Credits
               credit={credit}
@@ -94,7 +94,7 @@ const App = (props) => {
               accountBalance={accountBalance} 
               setAccountBalance={setAccountBalance}
               />} 
-            /> */}
+            />
         </Routes>
       </Router>
         

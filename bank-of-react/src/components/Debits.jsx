@@ -8,14 +8,14 @@ function Debits(props) {
     const addDebit = (event) => {
         event.preventDefault(); 
         let newDebit = {}
-        let debitDescription = event.target[0].value; 
-        let debitAmount = event.target[1].value; 
+        let description = event.target[0].value; 
+        let amount = event.target[1].value; 
         const date = new Date().toLocaleDateString();
-        newDebit.debitDescription = debitDescription; 
-        newDebit.debitAmount = debitAmount; 
+        newDebit.description = description; 
+        newDebit.amount = amount; 
         newDebit.date = date; 
         props.setDebitList(() => {return[newDebit, ...props.debitList]});
-        props.setDebit(props.debit + debitAmount);
+        props.setDebit(parseInt(props.debit)+parseInt(amount));
     }
 
     return (
@@ -35,12 +35,12 @@ function Debits(props) {
                 <h2>Numbers:</h2>
                 <ul>
                     {props.debitList.map((debit) => (
-                        <li>{debit.desciption}{debit.amount}{debit.date}</li>
+                        <li>{debit.description}{debit.amount}{debit.date}</li>
                     ))}
                 </ul>
             </div>
             
-            <AccountBalance accountBalance={props.accountBalance} />
+            <AccountBalance accountBalance={props.accountBalance} debit={props.debit} credit={props.credit}/>
         </div>
     );
 }
